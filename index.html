@@ -18,17 +18,18 @@
   </head>
   <body>
     <div class="container">
-      <div class="add-flashcard-con">
-        <button id="add-flashcard">Add Flashcard</button>
-      </div>
+      <div class="top-container">
+        <div class="logo">The Word Wizard</div>
 
-      <div class="io-con">
-        <button id="export">
-          <i class="fa-solid fa-file-export"></i>
-        </button>
-        <button id="import">
-          <i class="fa-solid fa-file-import"></i>
-        </button>
+        <div class="add-flashcard-con">
+          <button id="add-flashcard">Add Flashcard</button>
+        </div>
+
+        <div class="io-con">
+          <button id="io">
+            <i class="fa-solid fa-file" style="font-size: 2em"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Display Card of Question And Answers Here -->
@@ -38,30 +39,37 @@
     </div>
 
     <!-- Input form for users to fill question and answer -->
-    <div id="add-question-card" class="question-container">
-      <h2>Add Flashcard</h2>
-      <div class="wrapper">
-        <!-- Error message -->
-        <div class="error-con">
-          <span class="hide" id="error">Input fields cannot be empty!</span>
-        </div>
+    <div id="defocus-background">
+      <div id="io-container" class="question-container">
+        <h2>Save/Import Code</h2>
+        <textarea
+          class="input"
+          id="code"
+          placeholder="Paste code here..."
+          rows="2"
+        ></textarea>
+        <button id="confirm">Done</button>
       </div>
-      <label for="question">Question:</label>
-      <textarea
-        class="input"
-        id="question"
-        placeholder="Type the question here..."
-        rows="2"
-      ></textarea>
-      <label for="answer">Answer:</label>
-      <textarea
-        class="input"
-        id="answer"
-        rows="4"
-        placeholder="Type the answer here..."
-      ></textarea>
-      <button id="save-btn">Save</button>
-      <button id="close-btn">Close</button>
+
+      <div id="add-question-card" class="question-container">
+        <h2 id="flashcard-title">Add Flashcard</h2>
+        <label for="question">Question:</label>
+        <textarea
+          class="input"
+          id="question"
+          placeholder="Type the question here..."
+          rows="2"
+        ></textarea>
+        <label for="answer">Answer:</label>
+        <textarea
+          class="input"
+          id="answer"
+          rows="4"
+          placeholder="Type the answer here..."
+        ></textarea>
+        <button id="save-btn">Save</button>
+        <button id="close-btn">Close</button>
+      </div>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
