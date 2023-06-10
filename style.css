@@ -5,15 +5,22 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #f7f9fd;
+  background-color: #262626;
 }
 .container {
   width: 90vw;
-  max-width: 62.5em;
+  max-width: 200em;
   position: relative;
   margin: auto;
 }
 .add-flashcard-con {
+  float:right;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.2em 1em;
+}
+.io-con {
+  float:right;
   display: flex;
   justify-content: flex-end;
   padding: 1.2em 1em;
@@ -31,27 +38,43 @@ button {
   font-weight: 500;
   border-radius: 0.4em;
 }
+.add-flashcard-con button:hover {
+  background-color:#86a1f6;
+  transition: 0.2s;
+}
+.io-con button {
+  font-size: 1em;
+  background-color: #ffffff00;
+  color: #587ef4;
+  padding: 0.8em 1.2em;
+  font-weight: 500;
+  border-radius: 0.4em;
+}
+.io-con button:hover {
+  color:#86a1f6;
+  transition: 0.2s;
+}
 #card-con {
   margin-top: 1em;
 }
 .question-container {
+  display: none; /* Hidden by default */
   width: 90vw;
   max-width: 34em;
-  display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #202020;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   padding: 3em 2em;
   border-radius: 0.6em;
-  box-shadow: 0 1em 2em rgba(28, 0, 80, 0.1);
+  box-shadow: 0em 0em 2em rgba(100, 100, 100, 0.05);
 }
 .question-container h2 {
   font-size: 2.2em;
-  color: #363d55;
+  color: #ffffff;
   font-weight: 600;
   text-align: center;
   margin-bottom: 2em;
@@ -82,16 +105,17 @@ button {
   justify-self: flex-end;
 }
 label {
-  color: #363d55;
+  color: #ffffff;
   font-weight: 600;
   margin-bottom: 0.3em;
 }
 textarea {
   width: 100%;
   padding: 0.7em 0.5em;
-  border: 1px solid #d0d0d0;
+  background: #303030;
+  border: 2px solid #252525;
   outline: none;
-  color: #414a67;
+  color: #f0f0f0;
   border-radius: 0.3em;
   resize: none;
 }
@@ -99,15 +123,33 @@ textarea:not(:last-child) {
   margin-bottom: 1.2em;
 }
 textarea:focus {
-  border-color: #363d55;
+  border-color: #f0f0f0;
 }
 #save-btn {
+  margin-top: 1em;
   font-size: 1em;
   background-color: #587ef4;
   color: #ffffff;
   padding: 0.6em 0;
   border-radius: 0.3em;
   font-weight: 600;
+}
+#save-btn:hover {
+  background-color:#86a1f6;
+  transition: 0.2s;
+}
+#close-btn {
+  margin-top: 0.5em;
+  font-size: 1em;
+  background-color: #587ef4;
+  color: #ffffff;
+  padding: 0.6em 0;
+  border-radius: 0.3em;
+  font-weight: 600;
+}
+#close-btn:hover {
+  background-color:#86a1f6;
+  transition: 0.2s;
 }
 .card-list-container {
   display: grid;

@@ -21,21 +21,30 @@
       <div class="add-flashcard-con">
         <button id="add-flashcard">Add Flashcard</button>
       </div>
+
+      <div class="io-con">
+        <button id="export">
+          <i class="fa-solid fa-file-export"></i>
+        </button>
+        <button id="import">
+          <i class="fa-solid fa-file-import"></i>
+        </button>
+      </div>
+
       <!-- Display Card of Question And Answers Here -->
       <div id="card-con">
-        <div class="card-list-container"></div>
+        <div id="card-list-container"></div>
       </div>
     </div>
+
     <!-- Input form for users to fill question and answer -->
-    <div class="question-container hide" id="add-question-card">
+    <div id="add-question-card" class="question-container">
       <h2>Add Flashcard</h2>
       <div class="wrapper">
         <!-- Error message -->
         <div class="error-con">
           <span class="hide" id="error">Input fields cannot be empty!</span>
         </div>
-        <!-- Close Button -->
-        <i class="fa-solid fa-xmark" id="close-btn"></i>
       </div>
       <label for="question">Question:</label>
       <textarea
@@ -52,6 +61,7 @@
         placeholder="Type the answer here..."
       ></textarea>
       <button id="save-btn">Save</button>
+      <button id="close-btn">Close</button>
     </div>
     <!-- Script -->
     <script src="script.js"></script>
