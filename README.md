@@ -1,2 +1,2 @@
-# WordWizard
+# WordWizard++
 Become the word wizard. 
