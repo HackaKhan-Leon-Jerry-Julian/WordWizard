@@ -19,7 +19,10 @@
   <body>
     <div class="container">
       <div class="top-container">
-        <div class="logo">The Word Wizard</div>
+        <div class="logo">
+          <img src="logo.png" width="50px" height="50px">
+          <div id="logo-name">The Word Wizard</div>
+        </div>
 
         <div class="add-flashcard-con">
           <button id="add-flashcard">Add Flashcard</button>
@@ -46,7 +49,7 @@
           class="input"
           id="code"
           placeholder="Paste code here..."
-          rows="2"
+          rows="10"
         ></textarea>
         <button id="confirm">Done</button>
       </div>
@@ -71,7 +74,14 @@
         <button id="close-btn">Close</button>
       </div>
     </div>
+
+    <button id="play">
+      <i class="fa-solid fa-play" style="font-size: 2.5em"></i>
+    </button>
+
     <!-- Script -->
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src="game.js"></script>
   </body>
 </html>

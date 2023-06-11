@@ -16,10 +16,13 @@ const ioButton = document.getElementById("io");
 const confirm = document.getElementById("confirm");
 const code = document.getElementById("code");
 
+const play = document.getElementById("play");
+
 var cards = [];
 var current = -1;
 var binded = -1;
 var consumed = false;
+var playing = false;
 
 // //Add question when user clicks 'Add Flashcard' button
 // addQuestion.addEventListener("click", () => {
@@ -109,6 +112,17 @@ confirm.addEventListener("click", () => {
   ioContainer.style.display = "none";
 });
 
+play.addEventListener("click", () => {
+  if(playing){
+    defocusBackground.style.display = "none";
+    playing = false;
+    play.innerHTML = '<i class="fa-solid fa-play" style="font-size: 2.5em"></i>';
+  }else{
+    defocusBackground.style.display = "block";
+    playing = true;
+    play.innerHTML = '<i class="fa-solid fa-x" style="font-size: 2.5em"></i>';
+  }
+});
 
 function rebuild(){
   var list = document.getElementById("card-list-container");
