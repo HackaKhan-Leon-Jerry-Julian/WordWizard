@@ -12,14 +12,16 @@ const enemyBoard = [];
   
 var textType = '';
 var inp;
+var playerHealth;
 
 
 
 function setup(){
-    createCanvas(500, 500);
+    createCanvas(1000, 1000);
     x = width/2;
     y = height/2;
   frameRate(30);
+  playerHealth = 100;
   
   
   inp = createInput('');
@@ -33,22 +35,34 @@ function setup(){
   
   
   for (i = 0; i < questions.length; i++){
-    enemyList.push({ques:questions[i], ans:answers[i]});
+    enemyList.push({ques: questions[i], ans:answers[i]});
+    // print("pushed an enemy to the list:", enemyList[i].ques, enemyList[i].ans);
 }
 
 }
 
 function draw(){
-  print(frameCount);
+  if (playerHealth <= 0) {
+    background(255, 0, 0);
+    text("You died!!!!!", 500, 500)
+    
+  }else {
+  
+  // print(frameCount, second());
 
 	background(154, 32, 191);
 	fill(rVal, bVal, gVal);
-	rect(x-50, y-50, 100, 100);
+	rect(x, y, 100, 100);
+  fill(0, 255, 0);
+    rect(0, height-20, playerHealth * 10, 20)
 
-  // console.log(textType);
+  // console.log(textType);  wang
   
-  if (((frameRate/2) % 100) > 0){
-    spawnEnemies(Math.round(frameRate/200));
+  
+  if (frameCount % 200 == 0){
+    spawnEnemy(Math.floor(frameCount/2000) + 1);
+    // print ("spawned", Math.ceil(frameCount/200), "enemies")
+    // print (enemyBoard.length, "enemies on the board")
   }
   
     
@@ -80,26 +94,43 @@ function draw(){
     }
 
     for (j = 0; j < enemyBoard.length; j++){
-      var theText = enemyBoard[j].enemyData.ques;
+      var theText = enemyBoard[j].ques;
       if (j%2 == 0)
-        fill(red);
+        fill(255, 0, 0);  
       else 
-        fill(blue)
+        fill(0, 0, 255)
       
       
       xDir = x - enemyBoard[j].enemyX;
       yDir = y - enemyBoard[j].enemyY;
       
-      enemyBoard[j].enemyX += xDir/40;
-      enemyBoard[j].enemyY += yDir/40;
+      enemyBoard[j].enemyX += xDir/60;
+      enemyBoard[j].enemyY += yDir/60;
       
       
       rect(enemyBoard[j].enemyX, enemyBoard[j].enemyY, 150, 150);
-      print("enemy spawned at :", enemyBoard[j].enemyX, enemyBoard[j].enemyY, 150, 150)
+      fill(0, 0, 0)
+      textSize(theText.length/10*-0.5  + 32);
+      text(theText, enemyBoard[j].enemyX, enemyBoard[j].enemyY)
+      
+      if (doOverlap(enemyBoard[j].enemyX, enemyBoard[j].enemyX+150, enemyBoard[j].enemyY, enemyBoard[j].enemyY+150, x, x+100, y, y+100)){
+        print ("overlaps")
+        playerHealth-=0.1;
+      }
+      // print("enemy spawned at :", enemyBoard[j].enemyX, enemyBoard[j].enemyY, 150, 150)
     }
-
+  }
     
 }
+
+
+   function doOverlap(pleft, pright, ptop, pbottom,  pcleft, pcright, pctop, pcbottom) {
+ if(((pleft < pcright) && (pright > pcleft) && (pbottom > pctop) && (ptop < pcbottom)))
+     {      
+        return true; 
+      }
+     else return false
+    }
 
   
 function myInputEvent() {
@@ -110,12 +141,14 @@ function myInputEvent() {
 
 function spawnEnemy(num){
   for (i = 0; i < num; i++){   
-    if (random(0, 2) >= 1){
-      
-    enemyBoard.push({enemyData: enemyList[random(0, enemyList.length)], enemyX:width + 200, enemyY:height + 200});
-    } else enemyBoard.push({enemyData: enemyList[random(0, enemyList.length)], enemyX:-200, enemyY:-200});
     
+      g  = Math.floor(random(0, enemyList.length)) ;
+      
+    enemyBoard.push({ques: enemyList[g].ques, ans:enemyList[g].ans, enemyX:width *(random(0, 4))  + 200, enemyY:height*(random(0, 4)) + 200});
+    
+    // print("enemy pushed")
   }
+  
 }
 
 
@@ -163,8 +196,8 @@ function keyPressed(){
 
 function killEnemies(attack){
   for (i = 0; i < enemyBoard.length; i++)
-    if (enemyBoard[i].enemyData.ans == attack){
-      enemyBoard.remove(i);
+    if (enemyBoard[i].ans == attack){
+      enemyBoard.splice(i, 1);
       i--;
     }
 }
